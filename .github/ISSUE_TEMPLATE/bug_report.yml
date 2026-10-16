@@ -1,0 +1,71 @@
+name: Bug report
+description: Something in Videoina does not work.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: To reproduce
+      description: Steps to reproduce the behavior.
+      value: |
+        1.
+        2.
+        3.
+        4.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: A clear and concise description of what you expected to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: If applicable, add screenshots to help explain your problem.
+  - type: dropdown
+    id: os
+    attributes:
+      label: OS
+      options:
+        - Windows 11
+        - Windows 10
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: os-details
+    attributes:
+      label: OS details
+      description: Linux distribution and desktop, or Windows build. Your GPU, if it is a video problem.
+      placeholder: e.g. Ubuntu 24.04, GNOME, Intel UHD 620
+  - type: input
+    id: version
+    attributes:
+      label: Videoina version
+      placeholder: e.g. v0.1.0
+    validations:
+      required: true
+  - type: input
+    id: media
+    attributes:
+      label: Media
+      description: Container and codecs of the file, if it matters (`ffprobe` shows them).
+      placeholder: e.g. MKV, HEVC 10-bit, ASS subtitles
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Add any other context about the problem here.

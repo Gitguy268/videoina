@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Videoina
+GenericName=Media Player
+Comment=IINA-style video player with a liquid-glass interface
+Exec=videoina %U
+Icon=videoina
+Terminal=false
+Categories=AudioVideo;Video;Player;
+MimeType=video/mp4;video/x-matroska;video/webm;video/quicktime;video/x-msvideo;video/mpeg;video/ogg;audio/mpeg;audio/flac;audio/ogg;audio/x-wav;

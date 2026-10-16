@@ -1,0 +1,13 @@
+build/
+AppDir/
+*.AppImage
+*.zip
+*.7z
+mpv/
+*.mkv
+*.png
+!docs/*.png
+.DS_Store
+.vscode/
+.idea/
+CMakeLists.txt.user

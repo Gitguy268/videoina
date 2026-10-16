@@ -1,0 +1,31 @@
+Videoina
+Copyright (C) 2026 Lucas Van De Weerd
+
+This program is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by the Free Software
+Foundation, either version 3 of the License, or (at your option) any later
+version. See LICENSE.
+
+Videoina is not affiliated with or endorsed by IINA, its authors, or Apple.
+"IINA" is the name of a separate project; Videoina uses none of its artwork.
+
+Third-party material
+--------------------
+
+IINA (https://github.com/iina/iina), GPL-3.0
+  config/input.conf is IINA's iina-default-input.conf with the macOS Command
+  key mapped to Ctrl. The control-bar layout follows IINA's on-screen
+  controller design.
+
+mpv / libmpv (https://mpv.io), GPL-2.0-or-later / LGPL-2.1-or-later
+  Videoina links against libmpv. Release builds bundle it: on Windows the
+  shinchiro build (https://github.com/shinchiro/mpv-winbuild-cmake,
+  mpv commit a2cd83c56d), on Linux Ubuntu 22.04's libmpv package, along with
+  the FFmpeg and other libraries it depends on. Their source code is available
+  from those projects.
+
+Qt 6 (https://www.qt.io), LGPL-3.0
+  Release builds bundle the Qt libraries unmodified, as shared libraries.
+  Source: https://download.qt.io/official_releases/qt/
+
+Icons are original vector paths drawn for Videoina.
