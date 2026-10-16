@@ -32,7 +32,7 @@ Get the latest build from [Releases](https://github.com/Gitguy268/videoina/relea
 
 | | |
 |---|---|
-| **Plays what mpv plays** | MKV, MP4, WebM, HEVC, AV1, HDR tone-mapping, ASS/SSA subtitles, multiple audio tracks, chapters, hardware decoding where available |
+| **Plays what mpv plays** | MKV, MP4, WebM, HEVC, AV1, ASS/SSA subtitles, multiple audio tracks, chapters |
 | **Liquid-glass controls** | Floating control bar, playlist sidebar and menus blur and refract the video in real time (a GPU shader, not a static image) |
 | **IINA shortcuts** | IINA's default bindings, with ⌘ mapped to Ctrl |
 | **Playlist** | Drop several files at once, or open them with Ctrl+O. Click an entry to jump to it |
@@ -128,6 +128,9 @@ cmake --build build
 
 - No plugins, picture-in-picture, online video (yt-dlp), seek-bar thumbnails or preferences window yet.
 - The glass effect covers Videoina's own controls. The window frame itself is not glass: there is no Mica or Acrylic on Windows, and desktop blur on Linux depends on the compositor.
+- Hardware decoding is requested (`hwdec=auto-safe`) but not yet tested on real Windows or Linux GPUs, and neither is HDR output. mpv falls back to software decoding when hardware decoding is unavailable.
+- CI tests every build headlessly with software OpenGL. It has not been tried by hand on Windows or Linux hardware yet.
+- No animated demo yet.
 - x86_64 only, and the builds are not code-signed.
 
 ## Licence

@@ -29,7 +29,9 @@ jobs:
       - name: System packages
         run: |
           sudo apt-get update
-          sudo apt-get install -y libmpv-dev libgl1-mesa-dev libxcb-cursor0 ninja-build ffmpeg xvfb libfuse2
+          sudo apt-get install -y libmpv-dev libgl1-mesa-dev libegl1 libxkbcommon-x11-0 libxcb-cursor0 \
+            libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-shape0 \
+            libxcb-xinerama0 libxcb-xkb1 ninja-build ffmpeg xvfb libfuse2
       - name: Build
         run: |
           cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr
