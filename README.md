@@ -18,6 +18,10 @@
 
 Videoina is a separate project. It is not affiliated with IINA or Apple, and it shares no code with IINA apart from its key-binding file (see [NOTICE](NOTICE)).
 
+<!-- live-links -->
+**Project page:** [gitguy268.github.io/videoina](https://gitguy268.github.io/videoina/) · [videoina.vercel.app](https://videoina.vercel.app)
+<!-- /live-links -->
+
 <!-- run-steps:start -->
 ## Run it locally, step by step
 
