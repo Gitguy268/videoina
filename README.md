@@ -6,7 +6,6 @@
 
 [Download](#download) · [Features](#features) · [Shortcuts](#keyboard-shortcuts) · [Building](#building) · [Contributing](CONTRIBUTING.md)
 
-[![Build](https://github.com/Gitguy268/videoina/actions/workflows/build.yml/badge.svg)](https://github.com/Gitguy268/videoina/actions/workflows/build.yml)
 [![Licence: GPL-3.0](https://img.shields.io/badge/licence-GPL--3.0-blue)](LICENSE)
 ![Platforms](https://img.shields.io/badge/platforms-Windows%20%7C%20Linux-lightgrey)
 ![Engine: mpv](https://img.shields.io/badge/engine-libmpv-purple)
@@ -21,7 +20,7 @@ Videoina is a separate project. It is not affiliated with IINA or Apple, and it 
 
 ## Download
 
-Get the latest build from [Releases](https://github.com/Gitguy268/videoina/releases):
+Builds will be on the GitHub Releases page once the repository is public:
 
 | System | File | How to run |
 |---|---|---|

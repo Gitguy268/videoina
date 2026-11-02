@@ -11,3 +11,8 @@ mpv/
 .vscode/
 .idea/
 CMakeLists.txt.user
+.vercel/
+.env
+.env.*
+!.env.example
+node_modules/
