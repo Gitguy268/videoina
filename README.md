@@ -18,6 +18,38 @@
 
 Videoina is a separate project. It is not affiliated with IINA or Apple, and it shares no code with IINA apart from its key-binding file (see [NOTICE](NOTICE)).
 
+<!-- run-steps:start -->
+## Run it locally, step by step
+
+1. **Install** CMake 3.21+, Ninja, Qt 6.5+ and libmpv. On Debian and Ubuntu:
+
+   ```sh
+   sudo apt install cmake ninja-build libmpv-dev qt6-base-dev qt6-declarative-dev qt6-shadertools-dev
+   ```
+
+   Windows steps are under [Building](#building).
+
+2. **Get the code:**
+
+   ```sh
+   git clone https://github.com/Gitguy268/videoina.git
+   cd videoina
+   ```
+
+3. **Build it:**
+
+   ```sh
+   cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+   cmake --build build
+   ```
+
+4. **Play a video:**
+
+   ```sh
+   ./build/videoina video.mkv
+   ```
+<!-- run-steps:end -->
+
 ## Download
 
 Builds will be on the GitHub Releases page once the repository is public:
