@@ -62,6 +62,7 @@ Builds will be on the GitHub Releases page once the repository is public:
 |---|---|---|
 | Windows 10/11 (x64) | `Videoina-win64.zip` | Unzip and run `videoina.exe`. The build is unsigned, so SmartScreen may ask you to confirm. |
 | Linux (x86_64, glibc 2.35+) | `Videoina-x86_64.AppImage` | `chmod +x Videoina-x86_64.AppImage && ./Videoina-x86_64.AppImage` |
+| Linux (x86_64, Flatpak) | `io.github.gitguy268.videoina.flatpak` | `flatpak install --user ./io.github.gitguy268.videoina.flatpak` (Flathub as a remote for the KDE runtime; see [packaging/flatpak](packaging/flatpak/README.md)) |
 
 ## Features
 
@@ -155,7 +156,7 @@ cmake --build build
 - `src/mpvitem.cpp`: a Qt Quick item that drives libmpv through its OpenGL render API, so each video frame lands in Qt's scene graph instead of a separate native window. It mirrors mpv properties into QML, and passes key presses to mpv as `keypress` commands so that `config/input.conf` decides what they do.
 - `qml/Glass.qml` and `shaders/glass.frag`: each glass panel captures the part of the scene behind it at half resolution. The shader blurs it, bends it inward near the rounded edge (refraction), darkens it slightly so white icons stay readable, and adds a rim highlight. Because the video is part of the scene, the glass reacts to it frame by frame on every graphics backend.
 - `qml/ControlBar.qml`, `qml/Playlist.qml`, `qml/Main.qml`: the interface.
-- CI (`.github/workflows/build.yml`) builds on Windows and Linux, packages the zip and AppImage, plays a generated test video in each, and uploads a screenshot. Tagging `v*` publishes a release.
+- CI (`.github/workflows/build.yml`) builds on Windows and Linux, packages the zip, AppImage and Flatpak, plays a generated test video in each, and uploads a screenshot. Tagging `v*` publishes a release.
 
 </details>
 

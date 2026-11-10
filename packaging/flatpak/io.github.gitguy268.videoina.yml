@@ -1,0 +1,92 @@
+# Self-hosted Flatpak of Videoina, built from this checkout. libmpv and the libraries it needs
+# that the KDE runtime lacks (libplacebo, libass) are built first. CI builds it in
+# .github/workflows/build.yml; see README.md here to build it yourself.
+app-id: io.github.gitguy268.videoina
+runtime: org.kde.Platform
+runtime-version: '6.11'
+sdk: org.kde.Sdk
+command: videoina
+finish-args:
+  - --share=ipc
+  - --share=network
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=pulseaudio
+  - --device=dri
+  - --filesystem=xdg-videos:ro
+  - --filesystem=xdg-music:ro
+  - --filesystem=xdg-download:ro
+  - --talk-name=org.freedesktop.ScreenSaver
+cleanup:
+  - '*.a'
+  - '*.la'
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /share/man
+modules:
+  - name: libplacebo
+    buildsystem: meson
+    config-opts:
+      - -Ddemos=false
+      - -Dtests=false
+    sources:
+      - type: git
+        url: https://github.com/haasn/libplacebo.git
+        tag: v7.387.0
+        commit: 275f7dea27924cdd34ab2e6c20e448b6bc4fab65
+
+  - name: libass
+    config-opts:
+      - --disable-static
+    sources:
+      - type: archive
+        url: https://github.com/libass/libass/releases/download/0.17.5/libass-0.17.5.tar.gz
+        sha256: caab4b993dd7be6187c55623b789ed75dddefea6e65938af134637c732fe094a
+
+  # Only the library: Videoina draws through mpv's render API, so mpv's own player, video
+  # outputs and scripting stay off.
+  - name: libmpv
+    buildsystem: meson
+    config-opts:
+      - -Dlibmpv=true
+      - -Dcplayer=false
+      - -Dlua=disabled
+      - -Djavascript=disabled
+      - -Duchardet=disabled
+      - -Dx11=disabled
+      - -Dwayland=disabled
+      - -Dalsa=disabled
+      - -Dmanpage-build=disabled
+      - -Dhtml-build=disabled
+      - -Dbuild-date=false
+    cleanup:
+      - /share
+    sources:
+      - type: archive
+        url: https://github.com/mpv-player/mpv/archive/refs/tags/v0.42.0.tar.gz
+        sha256: bcfebbfa2b65a6d88dc97ea18117831072373e38b5785a2afb874ed4df5070dd
+
+  - name: videoina
+    buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+    post-install:
+      - install -Dm644 packaging/flatpak/io.github.gitguy268.videoina.desktop /app/share/applications/io.github.gitguy268.videoina.desktop
+      - install -Dm644 packaging/flatpak/io.github.gitguy268.videoina.metainfo.xml /app/share/metainfo/io.github.gitguy268.videoina.metainfo.xml
+      - install -Dm644 packaging/videoina.svg /app/share/icons/hicolor/scalable/apps/io.github.gitguy268.videoina.svg
+      - install -Dm644 LICENSE /app/share/licenses/io.github.gitguy268.videoina/LICENSE
+      - install -Dm644 NOTICE /app/share/licenses/io.github.gitguy268.videoina/NOTICE
+    sources:
+      - type: dir
+        path: ../..
+        # Build output from local builds and from the CI action (state, build and repo dirs).
+        skip:
+          - build
+          - .git
+          - .flatpak-builder
+          - flatpak_app
+          - repo
+          - packaging/flatpak/build
+          - packaging/flatpak/repo
+          - packaging/flatpak/.flatpak-builder
