@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.gitguy268.videoina</id>
+  <name>Videoina</name>
+  <summary>IINA-style video player with a liquid-glass interface</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0-only</project_license>
+  <developer id="io.github.gitguy268">
+    <name>Lucas Van De Weerd</name>
+  </developer>
+  <description>
+    <p>Videoina is a video player built on Qt and libmpv, with an interface in the style of IINA: a glass control bar, a playlist and IINA's keyboard shortcuts.</p>
+  </description>
+  <launchable type="desktop-id">io.github.gitguy268.videoina.desktop</launchable>
+  <url type="homepage">https://github.com/Gitguy268/videoina</url>
+  <url type="bugtracker">https://github.com/Gitguy268/videoina/issues</url>
+  <categories>
+    <category>AudioVideo</category>
+    <category>Video</category>
+    <category>Player</category>
+  </categories>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.1.0" date="2026-11-10"/>
+  </releases>
+</component>
