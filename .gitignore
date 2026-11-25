@@ -16,3 +16,9 @@ CMakeLists.txt.user
 .env.*
 !.env.example
 node_modules/
+
+# Flatpak build output
+packaging/flatpak/build/
+packaging/flatpak/repo/
+.flatpak-builder/
+*.flatpak

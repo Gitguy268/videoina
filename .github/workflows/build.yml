@@ -114,9 +114,25 @@ jobs:
             windows.png
           if-no-files-found: ignore
 
+  flatpak:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    container:
+      image: ghcr.io/flathub-infra/flatpak-github-actions:kde-6.11
+      options: --privileged
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - uses: flatpak/flatpak-github-actions/flatpak-builder@79327416609af08178ad73b352877e51450790b3 # v6.8
+        with:
+          manifest-path: packaging/flatpak/io.github.gitguy268.videoina.yml
+          bundle: io.github.gitguy268.videoina.flatpak
+          artifact-name: flatpak
+          cache-key: flatpak-builder-videoina
+      - run: appstreamcli validate --no-net --explain packaging/flatpak/io.github.gitguy268.videoina.metainfo.xml
+
   release:
     if: startsWith(github.ref, 'refs/tags/v')
-    needs: [linux, windows]
+    needs: [linux, windows, flatpak]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -127,4 +143,4 @@ jobs:
       - name: Publish release
         env:
           GH_TOKEN: ${{ github.token }}
-        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes Videoina-x86_64.AppImage Videoina-win64.zip
+        run: gh release create "$GITHUB_REF_NAME" --repo "$GITHUB_REPOSITORY" --generate-notes Videoina-x86_64.AppImage Videoina-win64.zip io.github.gitguy268.videoina.flatpak
